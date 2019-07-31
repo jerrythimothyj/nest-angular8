@@ -9,8 +9,12 @@
 
 ## Run with postman
 
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![](https://raw.githubusercontent.com/jerrythimothyj/nest-api/nest-mongo/postman-screenshot.png)
 
-##Make sure mongodb is running:
-> brew services stop mongodb
-> brew services start mongodb
+
+## Make sure mongodb is running:
+
+```
+$ brew services stop mongodb
+$ brew services start mongodb
+```
