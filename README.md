@@ -1,11 +1,10 @@
-## https://www.djamware.com/post/5d2898430707cc5968d9d57f/build-a-web-app-using-nestjs-fastify-mongodb-and-angular-8
+## https://docs.nestjs.com/recipes/sql-typeorm
 
 - Node.js
-- Angular 8
 - Nest.js
 - Fastify.js
-- Mongoose.js
-- MongoDB
+- MySQL
+- TypeORM
 
 ## Run with postman
 
@@ -15,6 +14,12 @@
 ## Make sure mongodb is running:
 
 ```
-$ brew services stop mongodb
-$ brew services start mongodb
+$ brew services start mysql@5.7
+$ brew services list
 ```
+
+## References:
+- https://github.com/Smokbomb/nestjs-mssql/blob/master/src/photo/photo.service.ts
+- https://github.com/typeorm/typeorm
+- https://tableplus.io/blog/2018/11/how-to-download-mysql-mac.html
+- https://gist.github.com/operatino/392614486ce4421063b9dece4dfe6c21
