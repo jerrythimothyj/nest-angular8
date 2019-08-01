@@ -1,15 +1,15 @@
 import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
-import { ArticleDto } from './dto/article.dto';
 import { ArticleService } from './article.service';
-import { Article } from './interfaces/article.interface';
+import { Article } from './entities/article.entity';
+
 
 @Controller('article')
 export class ArticleController {
     constructor(private readonly articleService: ArticleService) {}
 
     @Post()
-        async create(@Body() articleDto: ArticleDto) {
-        return this.articleService.create(articleDto);
+        async create(@Body() article: Article) {
+        return this.articleService.create(article);
     }
 
     @Get()
@@ -23,12 +23,12 @@ export class ArticleController {
     }
 
     @Put(':id')
-        async update(@Param('id') id: string, @Body() articleDto: ArticleDto) {
-        return this.articleService.update(id, articleDto);
+        async update(@Param('id') id: string, @Body() article: Article) {
+        return this.articleService.update(id, article);
     }
 
     @Delete(':id')
-        async delete(@Param('id') id: string, @Body() articleDto: ArticleDto) {
-        return this.articleService.delete(id, articleDto);
+        async delete(@Param('id') id: string, @Body() article: Article) {
+        return this.articleService.delete(id, article);
     }
 }

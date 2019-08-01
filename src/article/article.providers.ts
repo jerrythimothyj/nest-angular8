@@ -1,10 +1,10 @@
-import { Connection } from 'mongoose';
-import { ArticleSchema } from './schemas/article.schemas';
+import { Connection } from 'typeorm';
+import { Article } from './entities/article.entity';
 
 export const articleProviders = [
     {
-        provide: 'ARTICLE_MODEL',
-        useFactory: (connection: Connection) => connection.model('Article', ArticleSchema),
+        provide: 'ARTICLE_REPOSITORY',
+        useFactory: (connection: Connection) => connection.getRepository(Article),
         inject: ['DATABASE_CONNECTION'],
     },
 ];

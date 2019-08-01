@@ -1,9 +1,19 @@
-import * as mongoose from 'mongoose';
+import { createConnection } from 'typeorm';
 
 export const databaseProviders = [
-    {
-        provide: 'DATABASE_CONNECTION',
-        useFactory: async (): Promise<typeof mongoose> =>
-        await mongoose.connect('mongodb://localhost/angular8-crud', { useNewUrlParser: true, useFindAndModify: false }),
-    },
+  {
+    provide: 'DATABASE_CONNECTION',
+    useFactory: async () => await createConnection({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'password',
+      database: 'test',
+      entities: [
+          __dirname + '/../**/*.entity{.ts,.js}',
+      ],
+      synchronize: true,
+    }),
+  },
 ];
