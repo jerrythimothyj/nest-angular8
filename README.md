@@ -8,7 +8,7 @@
 
 ## Run with postman
 
-![](https://raw.githubusercontent.com/jerrythimothyj/nest-api/nest-mongo/postman-screenshot.png)
+![](https://raw.githubusercontent.com/jerrythimothyj/nest-api/nest-mysql/postman_screenshot.png)
 
 
 ## Make sure mongodb is running:
