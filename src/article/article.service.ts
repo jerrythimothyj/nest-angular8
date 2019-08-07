@@ -1,16 +1,19 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { Repository, getManager } from 'typeorm';
 import { Article } from './entities/article.entity';
 import { ArticleAddress } from './entities/article-address.entity';
 
 @Injectable()
 export class ArticleService {
+  entityManager: any;
   constructor(
     @Inject('ARTICLE_REPOSITORY')
     private readonly articleRepository: Repository<Article>,
     @Inject('ARTICLE_ADDRESS_REPOSITORY')
     private readonly articleAddressRepository: Repository<ArticleAddress>,
-  ) { }
+  ) {
+
+  }
 
   async create(articleDto: Article): Promise<Article> {
     const createdArticle = new Article();
@@ -35,7 +38,8 @@ export class ArticleService {
   }
 
   async find(id: string): Promise<Article> {
-    return await this.articleRepository.findOne(id);
+    const entityManager = getManager();
+    return await entityManager.query(`SELECT * FROM article WHERE id = ${id}`);
   }
 
   async update(id: string, articleDto: Article): Promise<Article> {
