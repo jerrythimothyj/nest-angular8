@@ -24,7 +24,6 @@ export class AuthController {
     @UseGuards(AuthGuard('google'))
     googleLogin() {
         // initiates the Google OAuth2 login flow
-        // console.log('res=', res);
     }
 
     @Get('google/callback')

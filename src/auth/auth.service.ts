@@ -17,14 +17,11 @@ export class AuthService {
 
   async validateOAuthLogin(thirdPartyId: string, provider: Provider): Promise<string> {
     try {
-      // console.log('came to validateOAuthLogin');
       const payload = {
         thirdPartyId,
         provider,
       };
 
-      // const jwt: string = sign(payload, this.JWT_SECRET_KEY, { expiresIn: 3600 });
-      // return jwt;
       return this.jwtService.sign(payload);
     } catch (err) {
       throw new InternalServerErrorException('validateOAuthLogin', err.message);
