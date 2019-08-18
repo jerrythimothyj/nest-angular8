@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Param, Request, UseGuards, Inject, forwardRef } from '@nestjs/common';
+import { Controller, Post, Body, Param, Req, Get, Res, Request, UseGuards, Inject, forwardRef } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { UserDto } from '../user/models/user.dto';
@@ -19,4 +19,25 @@ export class AuthController {
   async login(@Request() req) {
     return this.authService.login(req.user);
   }
+
+  @Get('google')
+    @UseGuards(AuthGuard('google'))
+    googleLogin() {
+        // initiates the Google OAuth2 login flow
+    }
+
+    @Get('google/callback')
+    @UseGuards(AuthGuard('google'))
+    googleLoginCallback(@Req() req, @Res() res) {
+        // handles the Google OAuth2 callback
+        // store profile data in db by calling a function like this.authService.storeGoogleProfile(req.user.profile)
+        // console.log('req.user=', req.user);
+        const jwt: string = req.user.jwt;
+        if (jwt) {
+            res.redirect('http://localhost:4200/login-success?access_token=' + jwt);
+        } else {
+            res.redirect('http://localhost:4200/login');
+        }
+    }
+
 }
