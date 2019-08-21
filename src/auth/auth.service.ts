@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 
 export enum Provider {
   GOOGLE = 'google',
+  AZURE_AD = 'azure-ad',
 }
 
 @Injectable()
